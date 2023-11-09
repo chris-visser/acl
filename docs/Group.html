@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Group - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Group.html">Group</a><ul class='methods'><li data-type='method'><a href="Group.html#details">details</a></li><li data-type='method'><a href="Group.html#makeChildOf">makeChildOf</a></li><li data-type='method'><a href="Group.html#makeParentOf">makeParentOf</a></li><li data-type='method'><a href="Group.html#register">register</a></li></ul></li><li><a href="InMemoryStorage.html">InMemoryStorage</a><ul class='methods'><li data-type='method'><a href="InMemoryStorage.html#exists">exists</a></li><li data-type='method'><a href="InMemoryStorage.html#filter">filter</a></li><li data-type='method'><a href="InMemoryStorage.html#get">get</a></li><li data-type='method'><a href="InMemoryStorage.html#getAllUserPrivileges">getAllUserPrivileges</a></li><li data-type='method'><a href="InMemoryStorage.html#getUserPrivilege">getUserPrivilege</a></li><li data-type='method'><a href="InMemoryStorage.html#register">register</a></li><li data-type='method'><a href="InMemoryStorage.html#setUserPrivilege">setUserPrivilege</a></li><li data-type='method'><a href="InMemoryStorage.html#userHasPrivilege">userHasPrivilege</a></li></ul></li><li><a href="Privileges.html">Privileges</a><ul class='methods'><li data-type='method'><a href="Privileges.html#assign">assign</a></li><li data-type='method'><a href="Privileges.html#can">can</a></li><li data-type='method'><a href="Privileges.html#exists">exists</a></li><li data-type='method'><a href="Privileges.html#grant">grant</a></li><li data-type='method'><a href="Privileges.html#group">group</a></li><li data-type='method'><a href="Privileges.html#has">has</a></li><li data-type='method'><a href="Privileges.html#hasPrivilege">hasPrivilege</a></li><li data-type='method'><a href="Privileges.html#is">is</a></li><li data-type='method'><a href="Privileges.html#isNonEmptyString">isNonEmptyString</a></li><li data-type='method'><a href="Privileges.html#pluck">pluck</a></li><li data-type='method'><a href="Privileges.html#register">register</a></li><li data-type='method'><a href="Privileges.html#registerRole">registerRole</a></li><li data-type='method'><a href="Privileges.html#revoke">revoke</a></li><li data-type='method'><a href="Privileges.html#sanitize">sanitize</a></li><li data-type='method'><a href="Privileges.html#validate">validate</a></li></ul></li></ul><h3><a href="global.html">Global</a></h3>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">Group</h1>
+    
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>
+        Group
+        </h2>
+        
+            <div class="class-description"><p>A small extension on top of the Privileges library to manage group based privileges</p></div>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+    
+    <h2>Constructor</h2>
+    
+
+    <h4 class="name" id="Group"><span class="type-signature"></span>new Group<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="group.js.html">group.js</a>, <a href="group.js.html#line15">line 15</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>const Group = require('privileges').Group;
+const Club = new Group(MongoStorage, 'ajax');</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id="details"><span class="type-signature"></span>details<span class="signature">()</span><span class="type-signature"> &rarr; {Object}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="group.js.html">group.js</a>, <a href="group.js.html#line47">line 47</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Returns group details</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>const group = new Group(MongoStorage, groupId);
+const details = group.details();</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <ul>
+<li>The object with the group details</li>
+</ul>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Object</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="makeChildOf"><span class="type-signature"></span>makeChildOf<span class="signature">(groupId)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="group.js.html">group.js</a>, <a href="group.js.html#line75">line 75</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Makes the group a subgroup of the given groupId (opposite of makeParentOf)
+For example a team being put under the flag of a club</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>const group = new Group(MongoStorage, 'ajax-selection');
+group.makeChildOf('ajax'); // Make ajax-selection a child group of ajax</code></pre>
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>groupId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>ID of the group from which the current group is going to be part of</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="makeParentOf"><span class="type-signature"></span>makeParentOf<span class="signature">(subgroupIds)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="group.js.html">group.js</a>, <a href="group.js.html#line59">line 59</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Puts 1 or more groups under the umbrella of another group (opposite of makeParentOf)
+For example a club that registers multiple subgroups representing teams</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>const group = new Group(MongoStorage, 'ajax');
+group.makeParentOf('ajax-selection); // Make ajax a parent group of ajax-selection</code></pre>
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>subgroupIds</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+|
+
+<span class="param-type">Array.&lt;String></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>An ID or a list of ID's of the child group(s)</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="register"><span class="type-signature"></span>register<span class="signature">(props)</span><span class="type-signature"> &rarr; {<a href="Group.html">Group</a>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="group.js.html">group.js</a>, <a href="group.js.html#line31">line 31</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Registers an object representing a group. The object can contain any fields.
+This should make it relatively simple to hook it up to any group system out there</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>const group = new Group(MongoStorage);
+const groupId = group.register({name: 'ajax', title: 'Ajax', country: 'Netherlands', city: 'Amsterdam', shirtColors: ['#ffffff', '#d00532']});</code></pre>
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>props</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Anything, a group is simply a reference</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Group - An instance of the Group library for the registered group</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="Group.html">Group</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Jan 15 2018 23:26:47 GMT+0100 (CET) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

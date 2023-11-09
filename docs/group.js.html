@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>group.js - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Group.html">Group</a><ul class='methods'><li data-type='method'><a href="Group.html#details">details</a></li><li data-type='method'><a href="Group.html#makeChildOf">makeChildOf</a></li><li data-type='method'><a href="Group.html#makeParentOf">makeParentOf</a></li><li data-type='method'><a href="Group.html#register">register</a></li></ul></li><li><a href="InMemoryStorage.html">InMemoryStorage</a><ul class='methods'><li data-type='method'><a href="InMemoryStorage.html#exists">exists</a></li><li data-type='method'><a href="InMemoryStorage.html#filter">filter</a></li><li data-type='method'><a href="InMemoryStorage.html#get">get</a></li><li data-type='method'><a href="InMemoryStorage.html#getAllUserPrivileges">getAllUserPrivileges</a></li><li data-type='method'><a href="InMemoryStorage.html#getUserPrivilege">getUserPrivilege</a></li><li data-type='method'><a href="InMemoryStorage.html#register">register</a></li><li data-type='method'><a href="InMemoryStorage.html#setUserPrivilege">setUserPrivilege</a></li><li data-type='method'><a href="InMemoryStorage.html#userHasPrivilege">userHasPrivilege</a></li></ul></li><li><a href="Privileges.html">Privileges</a><ul class='methods'><li data-type='method'><a href="Privileges.html#assign">assign</a></li><li data-type='method'><a href="Privileges.html#can">can</a></li><li data-type='method'><a href="Privileges.html#exists">exists</a></li><li data-type='method'><a href="Privileges.html#grant">grant</a></li><li data-type='method'><a href="Privileges.html#group">group</a></li><li data-type='method'><a href="Privileges.html#has">has</a></li><li data-type='method'><a href="Privileges.html#hasPrivilege">hasPrivilege</a></li><li data-type='method'><a href="Privileges.html#is">is</a></li><li data-type='method'><a href="Privileges.html#isNonEmptyString">isNonEmptyString</a></li><li data-type='method'><a href="Privileges.html#pluck">pluck</a></li><li data-type='method'><a href="Privileges.html#register">register</a></li><li data-type='method'><a href="Privileges.html#registerRole">registerRole</a></li><li data-type='method'><a href="Privileges.html#revoke">revoke</a></li><li data-type='method'><a href="Privileges.html#sanitize">sanitize</a></li><li data-type='method'><a href="Privileges.html#validate">validate</a></li></ul></li></ul><h3><a href="global.html">Global</a></h3>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">group.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * An object representing a group
+ * Each group has at least a 'parent' field to allow the group to be part of a hierarchy
+ * For convenience some meta fields have been added like 'createdAt', 'updatedAt' and 'createdBy'
+ * The group hierarchy allows a developer a convenient API to automatically propagate granted privileges to subgroups
+ * @typedef {Object} group
+ */
+
+/**
+ * A small extension on top of the Privileges library to manage group based privileges
+ * @example
+ * const Group = require('privileges').Group;
+ * const Club = new Group(MongoStorage, 'ajax');
+ */
+class Group {
+
+  constructor(storage, id) {
+    this.storage = storage;
+    this.id = id;
+  }
+
+  /**
+   * Registers an object representing a group. The object can contain any fields.
+   * This should make it relatively simple to hook it up to any group system out there
+   * @example
+   * const group = new Group(MongoStorage);
+   * const groupId = group.register({name: 'ajax', title: 'Ajax', country: 'Netherlands', city: 'Amsterdam', shirtColors: ['#ffffff', '#d00532']});
+   * @param {Object} props - Anything, a group is simply a reference
+   * @returns {Group} Group - An instance of the Group library for the registered group
+   */
+  register(props) {
+    if(this.id &amp;&amp; this.details()) {
+      throw new Error('Cannot register a group that already exists');
+    }
+    // Simply persist any props, even if this.id was set by the user
+    this.id = this.storage.registerGroup(props);
+    return this.id;
+  }
+
+  /**
+   * Returns group details
+   * @example
+   * const group = new Group(MongoStorage, groupId);
+   * const details = group.details();
+   * @returns {Object} - The object with the group details
+   */
+  details() {
+    return this.storage.fetchGroup(this.id);
+  }
+
+  /**
+   * Puts 1 or more groups under the umbrella of another group (opposite of makeParentOf)
+   * For example a club that registers multiple subgroups representing teams
+   * @example
+   * const group = new Group(MongoStorage, 'ajax');
+   * group.makeParentOf('ajax-selection); // Make ajax a parent group of ajax-selection
+   * @param {String|Array&lt;String>} subgroupIds - An ID or a list of ID's of the child group(s)
+   */
+  makeParentOf(subgroupIds) {
+    if (subgroupIds.constructor === Array) {
+      return subgroupIds.forEach(subgroupId => this.storage.setGroupParent(subgroupId, this.id));
+    }
+
+    this.storage.setGroupParent(subgroupIds, this.id);
+  }
+
+  /**
+   * Makes the group a subgroup of the given groupId (opposite of makeParentOf)
+   * For example a team being put under the flag of a club
+   * @example
+   * const group = new Group(MongoStorage, 'ajax-selection');
+   * group.makeChildOf('ajax'); // Make ajax-selection a child group of ajax
+   * @param {String} groupId - ID of the group from which the current group is going to be part of
+   */
+  makeChildOf(groupId) {
+    this.storage.setGroupParent(this.id, groupId);
+  }
+
+  // grant(userId, privilege, propagate = false) {
+  //   if (propagate === true) {
+  //     const subgroups = this.storage.getSubgroups(group);
+  //     // store each privilege copy on the given user
+  //     return subgroups.map(subgroup => {
+  //       return this.storage.setUserPrivilege(userId, this.sanitize({ name, component, group: subgroup, role }));
+  //     });
+  //   }
+  // }
+}
+
+module.exports = Group;</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Jan 15 2018 23:26:47 GMT+0100 (CET) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

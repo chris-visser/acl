@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InMemoryStorage # getAllUserPrivileges(privilege) Should return an array with 2 privileges for the given user 1`] = `
+Array [
+  Object {
+    "component": "matches",
+    "group": "zcfc",
+    "name": "read",
+  },
+  Object {
+    "component": "members",
+    "group": "zcfc",
+    "name": "kick",
+  },
+]
+`;
+
+exports[`InMemoryStorage # getUserPrivilege(privilege) Should return the privilege for the given user, because it matches exactly 1`] = `
+Object {
+  "component": "matches",
+  "group": "zcfc",
+  "name": "read",
+}
+`;
+
+exports[`InMemoryStorage # setUserPrivilege(privilege) Should set 2 privileges for the user 1`] = `
+Array [
+  Object {
+    "component": "matches",
+    "group": "zcfc",
+    "name": "read",
+  },
+  Object {
+    "component": "members",
+    "group": "zcfc",
+    "name": "read",
+  },
+]
+`;

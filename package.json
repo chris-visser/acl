@@ -1,0 +1,27 @@
+{
+  "name": "cloudspider-privileges",
+  "version": "0.2.1",
+  "description": "A package to manage ACL based on privileges or roles per component",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "test-watch": "jest --watchAll",
+    "docs": "./node_modules/.bin/jsdoc -c ./jsdoc.json -r"
+  },
+  "keywords": [
+    "acl",
+    "permissions",
+    "roles",
+    "privileges"
+  ],
+  "author": "Chris Visser",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.4"
+  },
+  "devDependencies": {
+    "docdash": "^0.4.0",
+    "jest": "^22.1.4",
+    "jsdoc": "^3.5.5"
+  }
+}

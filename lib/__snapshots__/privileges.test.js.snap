@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Privileges # pluck(property, filter) Should return a list of all groups having access to component A 1`] = `
+Array [
+  "a-team",
+  "b-team",
+  null,
+]
+`;
+
+exports[`Privileges # pluck(property, filter) Should return a list of all groups having the "create" privilege 1`] = `
+Array [
+  "a-team",
+  "b-team",
+  null,
+]
+`;
+
+exports[`Privileges # pluck(property, filter) Should return a list of all privilege names attached to component A 1`] = `
+Array [
+  "create",
+  "read",
+  "update",
+]
+`;
+
+exports[`Privileges # pluck(property, filter) Should return a list of all privilege names attached to group a-team 1`] = `
+Array [
+  "create",
+  "read",
+  "update",
+]
+`;
+
+exports[`Privileges # pluck(property, filter) Should return an array of strings of all components attached to group "a-team" 1`] = `
+Array [
+  "A",
+  "B",
+  "C",
+]
+`;
+
+exports[`Privileges # pluck(property, filter) Should return an array of strings of all components that are attached to the "create" privilege 1`] = `
+Array [
+  "A",
+  "B",
+  "C",
+]
+`;
+
+exports[`Privileges # register() Should return the sanitized privilege object when successfully registered 1`] = `undefined`;
+
+exports[`Privileges # sanitize() Should add the "component" with value NULL if not given 1`] = `
+Object {
+  "component": null,
+  "group": "zcfc",
+  "name": "kickMember",
+  "role": null,
+}
+`;
+
+exports[`Privileges # sanitize() Should add the "group" and "component" fields. Both with value NULL if not given 1`] = `
+Object {
+  "component": null,
+  "group": null,
+  "name": "kickMember",
+  "role": null,
+}
+`;
+
+exports[`Privileges # sanitize() Should add the "group" field with value NULL if not given 1`] = `
+Object {
+  "component": "matches",
+  "group": null,
+  "name": "kickMember",
+  "role": null,
+}
+`;
+
+exports[`Privileges # sanitize() Should ignore the extra field 1`] = `
+Object {
+  "component": "matches",
+  "group": "zcfc",
+  "name": "kickMember",
+  "role": null,
+}
+`;
+
+exports[`Privileges # sanitize() Should not change any valid field 1`] = `
+Object {
+  "component": "matches",
+  "group": "zcfc",
+  "name": "kickMember",
+  "role": null,
+}
+`;
