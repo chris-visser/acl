@@ -1,6 +1,6 @@
 # Privileges ACL
 
-**WIP: Do not use this library 'yet'.**
+**WIP: Do not use this library. I'm updating this to modern standards**
 
 An access control library to manage and check user privileges. 
 This library has been build to support roles and groups out of the box. 
