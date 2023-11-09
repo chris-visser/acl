@@ -11,8 +11,10 @@ and Meteor (Minimongo) storage are included by default.
 ## Getting started
 
 ```
-npm install --save privileges
+npm install
 ```
+
+JSDocs found at https://chris-acl.netlify.app/
 
 ### Selecting a storage
 
